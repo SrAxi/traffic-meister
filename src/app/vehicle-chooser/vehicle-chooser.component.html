@@ -1,0 +1,37 @@
+<form class="form-basic" method="post" action="#">
+
+  <div class="form-title-row">
+    <h1>Choose your vehicle</h1>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Vehicle</span>
+      <select name="dropdown" (change)="typeSelected($event.target.value)">
+        <option *ngFor="let type of vehicleTypes" [value]="type">{{type | capitalize}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Brand</span>
+      <select name="dropdown" (change)="brandSelected($event.target.value)">
+        <option *ngFor="let brand of vehicleBrands" [value]="brand">{{brand | capitalize}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Color</span>
+      <select name="dropdown">
+        <option *ngFor="let color of vehicleColors" [value]="color">{{color | capitalize}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-row">
+    <button>Select vehicle</button>
+  </div>
+</form>

@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { HeaderModule } from './shared/layout/header/header.module';
+import { VehicleChooserModule } from './vehicle-chooser/vehicle-chooser.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,9 +15,16 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HeaderModule,
+    VehicleChooserModule
+  ],
+  exports: [
+    HeaderModule,
+    VehicleChooserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
