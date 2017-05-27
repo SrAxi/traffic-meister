@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-declare const trafficMeister: any;
-
-import '../../assets/api/vehicles/index.js';
+import { ApiService } from '../shared/api/api.service';
 
 @Component({
   selector: 'app-vehicle-chooser',
@@ -14,60 +11,137 @@ export class VehicleChooserComponent implements OnInit {
   private vehicleBrands = <any>[];
   private vehicleColors = <any>[];
 
-  constructor() {
-    trafficMeister.fetchData((err, data) => {
-      console.log(data);
-      this.fetchedData = data;
-      this.getTypes();
-      console.log(this.vehicleTypes);
-    });
+  private typeSelector: string;
+  private brandSelector: string;
+  private colorSelector: string;
+
+  constructor(private apiService: ApiService) {
+    // Here we call the App's shared ApiService in order to get the data
+    // In a real App we will have Http methods inside this service
+    this.apiService.fetch().then((data) => {
+        // we first store the received data in our fetchedData object
+        this.fetchedData = data;
+
+        // we now proceed to get a list of all vehicle types that exist in the object we have received
+        this.loadAll();
+      }
+    );
   }
 
   ngOnInit() {
   }
 
-  getTypes() {
+  // getTypes() {
+  //   const types = [];
+  //
+  //   this.fetchedData.map(function (obj) {
+  //     types.push(obj.type);
+  //   }.bind(this));
+  //
+  //   this.vehicleTypes = types.filter((v, i, a) => a.indexOf(v) === i);
+  //
+  //   this.typeSelector = this.vehicleTypes[0];
+  // }
+  //
+  // getBrands() {
+  //   const brands = [];
+  //
+  //   this.fetchedData.map(function (obj) {
+  //
+  //     brands.push(obj.brand);
+  //
+  //   }.bind(this));
+  //
+  //   this.vehicleBrands = brands.filter((v, i, a) => a.indexOf(v) === i);
+  //   this.brandSelector = this.vehicleBrands[0];
+  // }
+
+  getColors() {
+    let colors = [];
+
+    // we are looping through the object received and adding the colors (all of them) to our `colors` array
+    this.fetchedData.map(function (obj) {
+      colors = colors.concat(obj.colors);
+
+    }.bind(this));
+
+    // now, we just remove the duplicates
+    this.vehicleColors = colors.filter((v, i, a) => a.indexOf(v) === i);
+
+    // and we assign a value to the color's dropdown model, we'll need it to filter the other lists
+    this.colorSelector = this.vehicleColors[0];
+  }
+
+  public updateLists(key, value) {
+    let colors = [];
+    const brands = [];
     const types = [];
 
+    console.log('key is: ' + key + '. And value is: ' + value);
+
     this.fetchedData.map(function (obj) {
-      types.push(obj.type);
+      let colorMatch = false;
+      if (key === 'colors') {
+        for (const color of obj[key]) {
+          if (color === value) {
+            colorMatch = true;
+          }
+        }
+      }
+
+      if (obj[key] === value || colorMatch) {
+        colors = colors.concat(obj.colors);
+        brands.push(obj.brand);
+        types.push(obj.type);
+      }
     }.bind(this));
 
     this.vehicleTypes = types.filter((v, i, a) => a.indexOf(v) === i);
-  }
-
-  getBrands(type: string) {
-    const brands = [];
-
-    this.fetchedData.map(function (obj) {
-      if (obj.type === type) {
-        brands.push(obj.brand);
-      }
-    }.bind(this));
-
     this.vehicleBrands = brands.filter((v, i, a) => a.indexOf(v) === i);
+    this.vehicleColors = colors.filter((v, i, a) => a.indexOf(v) === i);
+
+    console.log('typeSelector --> ' + JSON.stringify(this.typeSelector));
+    console.log('brandSelector --> ' + JSON.stringify(this.brandSelector));
+    console.log('colorSelector --> ' + JSON.stringify(this.colorSelector));
   }
 
-  getColors(brand: string) {
+  public loadAll() {
     let colors = [];
+    const brands = [];
+    const types = [];
 
     this.fetchedData.map(function (obj) {
-      if (obj.brand === brand) {
-        colors = colors.concat(obj.colors);
-      }
+      colors = colors.concat(obj.colors);
+      brands.push(obj.brand);
+      types.push(obj.type);
+
     }.bind(this));
 
-    console.log(colors);
-
+    // now, we just remove the duplicates
+    this.vehicleTypes = types.filter((v, i, a) => a.indexOf(v) === i);
+    this.vehicleBrands = brands.filter((v, i, a) => a.indexOf(v) === i);
     this.vehicleColors = colors.filter((v, i, a) => a.indexOf(v) === i);
+
+    // and we assign a value to the color's dropdown model, we'll need it to filter the other lists
+    this.typeSelector = this.vehicleTypes[0];
+    this.brandSelector = this.vehicleBrands[0];
+    this.colorSelector = this.vehicleColors[0];
+
+    console.log('typeSelector --> ' + JSON.stringify(this.typeSelector));
+    console.log('brandSelector --> ' + JSON.stringify(this.brandSelector));
+    console.log('colorSelector --> ' + JSON.stringify(this.colorSelector));
   }
 
   typeSelected(type) {
-    this.getBrands(type);
+    this.updateLists('type', type);
   }
 
   brandSelected(brand) {
-    this.getColors(brand);
+    this.updateLists('brand', brand);
+  }
+
+  colorSelected(color) {
+    this.updateLists('colors', color);
   }
 }
 
