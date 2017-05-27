@@ -7,8 +7,8 @@ describe('traffic-meister App', () => {
     page = new TrafficMeisterPage();
   });
 
-  it('should display message saying app works', () => {
+    it('should display message saying Traffic Meister', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+        expect(page.getParagraphText()).toEqual('Traffic Meister');
   });
 });
