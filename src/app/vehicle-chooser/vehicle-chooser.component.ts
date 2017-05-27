@@ -100,6 +100,18 @@ export class VehicleChooserComponent implements OnInit {
     this.vehicleBrands = brands.filter((v, i, a) => a.indexOf(v) === i);
     this.vehicleColors = colors.filter((v, i, a) => a.indexOf(v) === i);
 
+    // if (key !== 'type') {
+    //   this.typeSelector = this.vehicleTypes[0];
+    // }
+    //
+    // if (key !== 'brand') {
+    //   this.brandSelector = this.vehicleBrands[0];
+    // }
+    //
+    // if (key !== 'colors') {
+    //   this.colorSelector = this.vehicleColors[0];
+    // }
+
     console.log('typeSelector --> ' + JSON.stringify(this.typeSelector));
     console.log('brandSelector --> ' + JSON.stringify(this.brandSelector));
     console.log('colorSelector --> ' + JSON.stringify(this.colorSelector));

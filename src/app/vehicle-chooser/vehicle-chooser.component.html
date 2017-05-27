@@ -7,8 +7,8 @@
   <div class="form-row">
     <label>
       <span>Vehicle</span>
-      <select name="dropdown" [(ngModel)]="typeSelector" (change)="typeSelected($event.target.value)">
-        <option *ngFor="let type of vehicleTypes" [value]="type" [selected]="typeSelector === type">{{type | capitalize}}</option>
+      <select name="dropdown" [(ngModel)]="typeSelector" (ngModelChange)="typeSelected($event)">
+        <option *ngFor="let type of vehicleTypes" [ngValue]="type" [selected]="typeSelector === type">{{type | capitalize}}</option>
       </select>
     </label>
   </div>
@@ -16,8 +16,8 @@
   <div class="form-row">
     <label>
       <span>Brand</span>
-      <select name="dropdown" [(ngModel)]="brandSelector" (change)="brandSelected($event.target.value)">
-        <option *ngFor="let brand of vehicleBrands" [value]="brand" [selected]="brandSelector === brand">{{brand | capitalize}}</option>
+      <select name="dropdown" [(ngModel)]="brandSelector" (ngModelChange)="brandSelected($event)">
+        <option *ngFor="let brand of vehicleBrands" [ngValue]="brand" [selected]="brandSelector === brand">{{brand | capitalize}}</option>
       </select>
     </label>
   </div>
@@ -25,8 +25,8 @@
   <div class="form-row">
     <label>
       <span>Color</span>
-      <select name="dropdown" [(ngModel)]="colorSelector" (change)="colorSelected($event.target.value)">
-        <option *ngFor="let color of vehicleColors" [value]="color" [selected]="colorSelector === color">{{color | capitalize}}</option>
+      <select name="dropdown" [(ngModel)]="colorSelector" (ngModelChange)="colorSelected($event)">
+        <option *ngFor="let color of vehicleColors" [ngValue]="color" [selected]="colorSelector === color">{{color | capitalize}}</option>
       </select>
     </label>
   </div>
