@@ -40,26 +40,26 @@
 <div class="form-basic">
 	<div *ngIf="uiMessagge" class="e2e-inner-html-bound" [innerHTML]="uiMessagge | safeHtml"></div>
 	<br>
-	<ng-template style="font-weight: bold;" #noSelection><span>none selected</span></ng-template>
+	<ng-template class="bold-text" #noSelection><span>none selected</span></ng-template>
 	<div class="form-row">
 		<label>
 			<span>Type selected: </span>
-			<span *ngIf="typeSelector;else noSelection;" style="color: #000000;">{{typeSelector | capitalize}}</span>
+			<span *ngIf="typeSelector;else noSelection;" class="font-color-black">{{typeSelector | capitalize}}</span>
 		</label>
 	</div>
 	<div class="form-row">
 		<label>
 			<span>Brand selected: </span>
-			<span *ngIf="brandSelector;else noSelection;" style="color: #000000;">{{brandSelector | capitalize}}</span>
+			<span *ngIf="brandSelector;else noSelection;" class="font-color-black">{{brandSelector | capitalize}}</span>
 		</label>
 	</div>
 	<div class="form-row">
 		<label>
 			<span>Color selected: </span>
-			<span *ngIf="colorSelector;else noSelection;"><span class="colorBox" [ngStyle]="{'background': colorSelector}"></span>{{colorSelector | capitalize}}</span>
+			<span *ngIf="colorSelector;else noSelection;" class="font-color-black"><span class="colorBox" [ngStyle]="{'background': colorSelector}"></span>{{colorSelector | capitalize}}</span>
 		</label>
 	</div>
 	<div class="form-row">
-		<img *ngIf="vehicleFound" src="{{selectedVehicle.img}}" style="width: 100%;"/>
+		<img *ngIf="vehicleFound" src="{{selectedVehicle.img}}" class="selectedVehicle"/>
 	</div>
 </div>

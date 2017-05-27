@@ -83,6 +83,15 @@ ul li {
 	display: inline-block;
 }
 
+/*General styles*/
+.bold-text {
+	font-weight: bold !important;
+}
+
+.font-color-black {
+	color: #000000 !important;
+}
+
 /*Overriding Styles*/
 .form-basic h1 {
 	border-bottom-color: #e06426;
@@ -129,8 +138,12 @@ span.colorBox {
 	width: 30px !important;
 	height: 30px !important;;
 	margin-right: 10px;
-	padding: 0px !important;;
+	padding: 0 !important;;
 	border: 1px solid rgb(76, 76, 76);
 	background: brown;
 	margin-top: -6px;
+}
+
+img.selectedVehicle {
+	width: 100%;
 }

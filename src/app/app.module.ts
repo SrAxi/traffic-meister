@@ -10,22 +10,22 @@ import { HeaderModule } from './shared/layout/header/header.module';
 import { VehicleChooserModule } from './vehicle-chooser/vehicle-chooser.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    HeaderModule,
-    VehicleChooserModule
-  ],
-  exports: [
-    HeaderModule,
-    VehicleChooserModule
-  ],
-  providers: [ApiService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        HeaderModule,
+        VehicleChooserModule
+    ],
+    exports: [
+        HeaderModule,
+        VehicleChooserModule
+    ],
+    providers: [ApiService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
