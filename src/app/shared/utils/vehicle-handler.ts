@@ -1,20 +1,20 @@
 import { UI_MESSAGGES } from '../../vehicle-chooser/ui-messagges';
 
 export abstract class VehicleHandler {
-    protected fetchedData = <any>[];
-    protected vehicleTypes = <any>[];
-    protected vehicleBrands = <any>[];
-    protected vehicleColors = <any>[];
+    public fetchedData = <any>[];
+    public vehicleTypes = <any>[];
+    public vehicleBrands = <any>[];
+    public vehicleColors = <any>[];
 
     // Selection models
-    protected typeSelector: string;
-    protected brandSelector: string;
-    protected colorSelector: string;
+    public typeSelector: string;
+    public brandSelector: string;
+    public colorSelector: string;
 
     // Selected vehicle
-    protected vehicleFound = false;
-    protected uiMessagge: any;
-    protected selectedVehicle = <any>{};
+    public vehicleFound = false;
+    public uiMessagge: any;
+    public selectedVehicle = <any>{};
 
     public updateLists (key, value) {
         let colors = [];

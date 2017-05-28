@@ -7,22 +7,22 @@ import { VehicleHandler } from '../shared/utils/vehicle-handler';
     templateUrl: './vehicle-chooser.component.html'
 })
 export class VehicleChooserComponent extends VehicleHandler implements OnInit {
-    protected fetchedData = <any>[];
-    protected vehicleTypes = <any>[];
-    protected vehicleBrands = <any>[];
-    protected vehicleColors = <any>[];
+    public fetchedData = <any>[];
+    public vehicleTypes = <any>[];
+    public vehicleBrands = <any>[];
+    public vehicleColors = <any>[];
 
     // Selection models
-    protected typeSelector: string;
-    protected brandSelector: string;
-    protected colorSelector: string;
+    public typeSelector: string;
+    public brandSelector: string;
+    public colorSelector: string;
 
     // Selected vehicle
-    protected vehicleFound = false;
-    protected uiMessagge: any;
-    protected selectedVehicle = <any>{};
+    public vehicleFound = false;
+    public uiMessagge: any;
+    public selectedVehicle = <any>{};
 
-    constructor (protected apiService: ApiService) {
+    constructor (public apiService: ApiService) {
         super();
 
         // Here we call the App's shared ApiService in order to get the data
