@@ -5,17 +5,17 @@ import { VehicleChooserComponent } from './vehicle-chooser.component';
 import { UtilsModule } from '../shared/utils/utils.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        UtilsModule
-    ],
-    declarations: [
-        VehicleChooserComponent
-    ],
-    exports: [
-        VehicleChooserComponent
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    UtilsModule
+  ],
+  declarations: [
+    VehicleChooserComponent
+  ],
+  exports: [
+    VehicleChooserComponent
+  ]
 })
 export class VehicleChooserModule {
 }

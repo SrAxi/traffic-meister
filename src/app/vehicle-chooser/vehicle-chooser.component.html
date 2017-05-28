@@ -1,65 +1,65 @@
 <form class="form-basic" method="post" action="#">
 
-	<div class="form-title-row">
-		<h1>Choose your vehicle</h1>
-	</div>
+  <div class="form-title-row">
+    <h1>Choose your vehicle</h1>
+  </div>
 
-	<div class="form-row">
-		<label>
-			<span>Vehicle</span>
-      <select class="types" name="dropdown" [(ngModel)]="typeSelector" (ngModelChange)="typeSelected($event)">
-				<option *ngFor="let type of vehicleTypes" [value]="type" [selected]="typeSelector === type">{{type | capitalize}}</option>
-			</select>
-		</label>
-	</div>
+  <div class="form-row">
+    <label>
+      <span>Vehicle</span>
+      <select class="types" name="dropdown" [(ngModel)]="typeSelector" (ngModelChange)="optionSelected('type', $event)">
+        <option *ngFor="let type of vehicleTypes" [value]="type" [selected]="typeSelector === type">{{type | capitalize}}</option>
+      </select>
+    </label>
+  </div>
 
-	<div class="form-row">
-		<label>
-			<span>Brand</span>
-      <select class="brands" name="dropdown" [(ngModel)]="brandSelector" (ngModelChange)="brandSelected($event)">
-				<option *ngFor="let brand of vehicleBrands" [value]="brand" [selected]="brandSelector === brand">{{brand | capitalize}}</option>
-			</select>
-		</label>
-	</div>
+  <div class="form-row">
+    <label>
+      <span>Brand</span>
+      <select class="brands" name="dropdown" [(ngModel)]="brandSelector" (ngModelChange)="optionSelected('brand', $event)">
+        <option *ngFor="let brand of vehicleBrands" [value]="brand" [selected]="brandSelector === brand">{{brand | capitalize}}</option>
+      </select>
+    </label>
+  </div>
 
-	<div class="form-row">
-		<label>
-			<span>Color</span>
-      <select class="colors" name="dropdown" [(ngModel)]="colorSelector" (ngModelChange)="colorSelected($event)">
-				<option *ngFor="let color of vehicleColors" [value]="color" [selected]="colorSelector === color">{{color | capitalize}}</option>
-			</select>
-		</label>
-	</div>
+  <div class="form-row">
+    <label>
+      <span>Color</span>
+      <select class="colors" name="dropdown" [(ngModel)]="colorSelector" (ngModelChange)="optionSelected('colors', $event)">
+        <option *ngFor="let color of vehicleColors" [value]="color" [selected]="colorSelector === color">{{color | capitalize}}</option>
+      </select>
+    </label>
+  </div>
 
-	<div class="form-row">
+  <div class="form-row">
     <button class="reloadButton" (click)="loadAll()">Reload</button>
-	</div>
+  </div>
 </form>
 <br>
 <br>
 <div class="form-basic">
-	<div *ngIf="uiMessagge" class="e2e-inner-html-bound" [innerHTML]="uiMessagge | safeHtml"></div>
-	<br>
-	<ng-template class="bold-text" #noSelection><span>none selected</span></ng-template>
-	<div class="form-row">
-		<label>
-			<span>Type selected: </span>
-			<span *ngIf="typeSelector;else noSelection;" class="font-color-black">{{typeSelector | capitalize}}</span>
-		</label>
-	</div>
-	<div class="form-row">
-		<label>
-			<span>Brand selected: </span>
-			<span *ngIf="brandSelector;else noSelection;" class="font-color-black">{{brandSelector | capitalize}}</span>
-		</label>
-	</div>
-	<div class="form-row">
-		<label>
-			<span>Color selected: </span>
-			<span *ngIf="colorSelector;else noSelection;" class="font-color-black"><span class="colorBox" [ngStyle]="{'background': colorSelector}"></span>{{colorSelector | capitalize}}</span>
-		</label>
-	</div>
-	<div class="form-row">
-		<img *ngIf="vehicleFound" src="{{selectedVehicle.img}}" class="selectedVehicle"/>
-	</div>
+  <div *ngIf="uiMessagge" class="e2e-inner-html-bound" [innerHTML]="uiMessagge | safeHtml"></div>
+  <br>
+  <ng-template class="bold-text" #noSelection><span>none selected</span></ng-template>
+  <div class="form-row">
+    <label>
+      <span>Type selected: </span>
+      <span *ngIf="typeSelector;else noSelection;" class="font-color-black">{{typeSelector | capitalize}}</span>
+    </label>
+  </div>
+  <div class="form-row">
+    <label>
+      <span>Brand selected: </span>
+      <span *ngIf="brandSelector;else noSelection;" class="font-color-black">{{brandSelector | capitalize}}</span>
+    </label>
+  </div>
+  <div class="form-row">
+    <label>
+      <span>Color selected: </span>
+      <span *ngIf="colorSelector;else noSelection;" class="font-color-black"><span class="colorBox" [ngStyle]="{'background': colorSelector}"></span>{{colorSelector | capitalize}}</span>
+    </label>
+  </div>
+  <div class="form-row">
+    <img *ngIf="vehicleFound" src="{{selectedVehicle.img}}" class="selectedVehicle"/>
+  </div>
 </div>

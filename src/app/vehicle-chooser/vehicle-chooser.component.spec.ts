@@ -7,23 +7,24 @@ import { ApiService } from '../shared/api/api.service';
 
 
 describe('VehicleChooserComponent', () => {
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [
-                VehicleChooserComponent
-            ],
-            imports: [
-                CommonModule,
-                FormsModule,
-                UtilsModule
-            ],
-            providers: [ApiService]
-        }).compileComponents();
-    }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        VehicleChooserComponent
+      ],
+      imports: [
+        CommonModule,
+        FormsModule,
+        UtilsModule
+      ],
+      providers: [ApiService]
+    }).compileComponents();
+  }));
 
-    it('should create the VehicleChooserComponent component', async(() => {
-        const fixture = TestBed.createComponent(VehicleChooserComponent);
-        const vehicleChooserComponent = fixture.debugElement.componentInstance;
-        expect(vehicleChooserComponent).toBeTruthy();
-    }));
+  // Testing VehicleChooserComponent creation
+  it('should create the VehicleChooserComponent component', async(() => {
+    const fixture = TestBed.createComponent(VehicleChooserComponent);
+    const vehicleChooserComponent = fixture.debugElement.componentInstance;
+    expect(vehicleChooserComponent).toBeTruthy();
+  }));
 });
