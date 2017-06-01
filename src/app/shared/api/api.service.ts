@@ -10,9 +10,13 @@ export class ApiService {
   // we should create specific services files in order to keep each method within it's logical scope
   public fetch () {
     // Here we are simulating an Http.get() call by using Angular's Promise returning our mock data
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       trafficMeister.fetchData((err, data) => {
-        resolve(data);
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
       });
     });
   }

@@ -31,13 +31,15 @@ export class VehicleChooserComponent extends VehicleHandler implements OnInit {
     // Here we call the App's shared ApiService in order to get the data
     // In a real App we will have Http methods inside this service
     this.apiService.fetch().then((data) => {
-        // we first store the received data in our fetchedData object
-        this.fetchedData = data;
+      // we first store the received data in our fetchedData object
+      this.fetchedData = data;
 
-        // we now proceed to map the received data in order to load all possible options within our dropdowns
-        this.loadAll();
-      }
-    );
+      // we now proceed to map the received data in order to load all possible options within our dropdowns
+      this.loadAll();
+
+    }).catch((ex) => {
+      console.error('Error fetching data', ex);
+    });
   }
 
   ngOnInit () {
