@@ -20,7 +20,7 @@ export abstract class VehicleHandler {
   public selectedVehicle = <any>{};
 
   // Here we will update all the lists according to the `key: value` passed as parameters. Example: `type: 'car'`
-  public updateLists (key, value) {
+  public updateLists(key, value) {
     let colors = [];
     const brands = [];
     const types = [];
@@ -42,7 +42,7 @@ export abstract class VehicleHandler {
         brands.push(obj.brand);
         types.push(obj.type);
       }
-    }.bind(this));
+    });
 
     // removing duplicates
     this.vehicleTypes = types.filter((v, i, a) => a.indexOf(v) === i);
@@ -54,7 +54,7 @@ export abstract class VehicleHandler {
   }
 
   // We proceed to map the received data and split it in 3 lists: Type, Brand and Color
-  public loadAll () {
+  public loadAll() {
     let colors = [];
     const brands = [];
     const types = [];
@@ -64,7 +64,7 @@ export abstract class VehicleHandler {
       brands.push(obj.brand);
       types.push(obj.type);
 
-    }.bind(this));
+    });
 
     // now, we just remove the duplicates
     this.vehicleTypes = types.filter((v, i, a) => a.indexOf(v) === i);
@@ -73,7 +73,7 @@ export abstract class VehicleHandler {
   }
 
   // Here we check if the overall selection points to an existing vehicle
-  public checkSelection () {
+  public checkSelection() {
     // We start by looping searching for matches
     for (let i = 0; i < this.fetchedData.length; i++) {
       if (this.fetchedData[i].brand === this.brandSelector && this.fetchedData[i].type === this.typeSelector
